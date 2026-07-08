@@ -1,65 +1,57 @@
 # Hi, I’m Iyiola 👋🏾
 
-I’m a builder, writer, and experimental technologist exploring how **XR, web, and storytelling** can be used to create practical tools, learning experiences, and digital products — especially in emerging markets.
+# Olukoya Iyiola (Iyi)
 
-I like turning **rough ideas into clear prototypes**, and learning in public as I go.
-
----
-
-## 🧠 Interests
-- Augmented Reality (AR) & XR for education, commerce, and navigation  
-- Web-based products and MVPs  
-- Human-centered product and systems thinking  
-- Writing (essays, concepts, prompts, narrative ideas)  
-- Building useful things with limited resources  
+Builder · XR Developer · Product Strategist · Lagos, Nigeria
 
 ---
 
-## 🛠️ What I’m Working On
-- Web-based AR experiments (marker & markerless)
-- Product concepts around navigation, interiors, learning, and discovery
-- Writing and publishing long-form thoughts
-- Small tools, demos, and exploratory prototypes
+I build things that sit at the intersection of spatial computing, community systems, and digital commerce — mostly for people the tools weren't designed for.
 
-> Many projects here are **experiments**, not finished products — the goal is learning, testing, and iteration.
+Currently working on **StoreSmith** (commerce OS for Nigerian SMBs(With Tunmise Oni)), exploring a revival of **Thanox** (community-designed EV for the African market), and co-directing **PUMZI**, a wordless sci-fi graphic novel.
+
+Previously an XR developer at **IMISI3D** — Africa's leading immersive technology lab.
+
+## What I build with
+
+| | |
+|---|---|
+| AR / XR | AR.js · WebXR · A-Frame · MediaPipe FaceMesh · Three.js · model-viewer |
+| Web | React 19 · TypeScript · Express 5 · PostgreSQL · Kysely · Vite |
+| Infra | AWS S3 · Docker · DigitalOcean · Socket.io |
+| Constraint | No ARCore / ARKit. Web-first, zero-install, 3GB RAM Android minimum. |
+
+## How I think
+
+Every idea runs through one filter: **Tool → User → Incentive → Distribution → Cultural Context.**  
+The standing question: will this actually deploy in Nigeria?
+
+## Active projects
+
+| | |
+|---|---|
+| StoreSmith | Commerce OS for Nigerian SMBs — storefront, payments, vendor wallet |
+| Thanox | Borderless EV design collective, phased toward manufacturing partnership |
+| PUMZI | Wordless sci-fi graphic novel, co-directed with a childhood collaborator |
+| ContentSmith | Video content fellowship — internal capacity + external SMB revenue |
+| As It Is | Nigeria-focused solo podcast, pilot ready, YouTube-first |
+
+## Writing
+
+[substack.com/@iyiolaolukoya](https://substack.com/@iyiolaolukoya)
+
+Essays on building in Africa, spatial computing, and the systems underneath things we take for granted.
+
+## Portfolio of ideas
+
+**Ideas in Motion** — a living document covering 15+ projects across XR, commerce, community finance, creative infrastructure, and long-range research.
+
+→ [Read it here](https://docs.google.com/document/d/1V05TM4JOx7EwgV8F7qFLjzE6eXkYQHbfdzLYgMg2vEg/edit?usp=sharing)
+
+## Find me
+
+[LinkedIn](https://linkedin.com/in/olukoyaiyiola) · [Substack](https://substack.com/@iyiolaolukoya) · [X](https://x.com/dynamik04837903) · olukoyaiyiola@gmail.com
 
 ---
 
-## 🧩 How I Build
-- Start small, ship early  
-- Favor clarity over complexity  
-- Design for people before platforms  
-- Learn in public  
-
----
-
-## 📚 Currently Learning
-- Monocular vision & SLAM fundamentals  
-- AR.js, WebXR, and lightweight 3D workflows  
-- Product storytelling & positioning  
-- Better writing through structure and constraint  
-
----
-
-## 🌍 Based In
-Nigeria 🇳🇬  
-Thinking locally, building globally.
-
----
-
-## 🤝 Open To
-- Collaborations on early-stage or experimental ideas  
-- AR/XR projects with real-world use cases  
-- Writing or content-driven initiatives  
-- Conversations that turn vague ideas into concrete plans  
-
----
-
-## 📫 Find Me Online
-- Twitter / X: https://x.com/dynamik04837903  
-- Substack: https://substack.com/@iyiolaolukoya  
-- LinkedIn: https://www.linkedin.com/in/olukoyaiyiola/
-
----
-
-> “Build small things that teach you big things.”
+> "Build small things that teach you things." — still true, but the things are bigger now.
