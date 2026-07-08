@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olukoya Iyiola — Builder, XR Developer & Product Strategist</title>
+  <meta name="description" content="Builder, XR Developer and Product Strategist based in Lagos, Nigeria. Working across spatial computing, product, and community systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────────────── */
+    :root {
+      --bg:         #F8F7F4;
+      --ink:        #141414;
+      --mid:        #4A4A4A;
+      --muted:      #9A9A9A;
+      --rule:       #E2E0DA;
+      --accent:     #1B4332;
+      --accent-lt:  #D6E8DC;
+      --accent-mid: #2D6A4F;
+
+      /* theme colors for project cards */
+      --t-spatial:   #1B4332;
+      --t-commerce:  #7B3F00;
+      --t-identity:  #1A1A5E;
+      --t-creative:  #4A1942;
+      --t-horizon:   #0A3D4A;
+      --t-community: #3D2C00;
+
+      --serif:  'DM Serif Display', Georgia, serif;
+      --sans:   'Inter', system-ui, sans-serif;
+
+      --max: 760px;
+      --wide: 1100px;
+    }
+
+    /* ── RESET ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── NAV ────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      background: rgba(248, 247, 244, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--mid);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── LAYOUT HELPERS ─────────────────────────────────────────── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .container-wide {
+      max-width: var(--wide);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    section { padding: 6rem 0; }
+    section + section { border-top: 1px solid var(--rule); }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .section-body {
+      font-size: 1.02rem;
+      color: var(--mid);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+    .section-body p + p { margin-top: 1rem; }
+
+    /* ── HERO ───────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 5rem;
+      border-top: none;
+    }
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-lt);
+      padding: 0.35rem 0.75rem;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      line-height: 1.08;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      max-width: 680px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--mid);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 5rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.8rem 1.6rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent-mid); }
+    .btn-ghost {
+      display: inline-block;
+      border: 1.5px solid var(--rule);
+      color: var(--mid);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.8rem 1.6rem;
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+    .hero-meta-item {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .hero-meta-item strong {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+
+    /* ── ABOUT ──────────────────────────────────────────────────── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .principles {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+    .principles li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.92rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+    .principles li:first-child { border-top: 1px solid var(--rule); }
+    .principles li strong {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    /* ── WRITING ────────────────────────────────────────────────── */
+    #writing .writing-intro {
+      margin-bottom: 3rem;
+    }
+    .writing-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .writing-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .writing-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(27,67,50,0.07);
+    }
+    .writing-platform {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .writing-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .writing-desc {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .writing-arrow {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+
+    /* ── PROJECTS ───────────────────────────────────────────────── */
+    #projects .projects-intro {
+      margin-bottom: 3rem;
+    }
+    .theme-group { margin-bottom: 3.5rem; }
+    .theme-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .project-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--t-color, var(--accent));
+      border-radius: 0 3px 3px 0;
+      padding: 1.4rem 1.4rem 1.4rem 1.25rem;
+      transition: box-shadow 0.2s;
+    }
+    .project-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .project-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+      line-height: 1.25;
+    }
+    .project-status {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* ── IDEAS IN MOTION CTA ────────────────────────────────────── */
+    #ideas {
+      background: var(--ink);
+      color: #fff;
+    }
+    #ideas .eyebrow { color: var(--accent-lt); }
+    #ideas .section-title { color: #fff; }
+    #ideas .section-body { color: rgba(255,255,255,0.65); max-width: 560px; }
+    #ideas .section-body p + p { margin-top: 1rem; }
+    .ideas-cta-row {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-light {
+      display: inline-block;
+      background: #fff;
+      color: var(--ink);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.8rem 1.6rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-light:hover { background: var(--accent-lt); }
+    .btn-ghost-light {
+      display: inline-block;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.75);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.8rem 1.6rem;
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost-light:hover {
+      border-color: rgba(255,255,255,0.6);
+      color: #fff;
+    }
+
+    /* ── CONTACT ────────────────────────────────────────────────── */
+    #contact .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-links {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .contact-links li {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .contact-links li:first-child { border-top: 1px solid var(--rule); }
+    .contact-platform {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      min-width: 100px;
+    }
+    .contact-handle {
+      font-size: 0.9rem;
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+    .contact-links li:hover .contact-handle { color: var(--accent); }
+    .contact-arrow { color: var(--muted); font-size: 0.8rem; }
+
+    /* ── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--wide);
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .footer-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 680px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1.25rem; }
+      .nav-links a { font-size: 0.75rem; }
+      #about .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      #contact .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      section { padding: 4rem 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">Olukoya Iyiola</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Lagos, Nigeria</span>
+      <h1 class="hero-title">
+        Building worlds,<br>then building<br><em>infrastructure</em><br>for others to live in them.
+      </h1>
+      <p class="hero-sub">
+        I'm Iyi — a builder, XR developer, and product strategist working across spatial computing, community systems, and digital commerce. Everything I build runs through one filter: will it actually work here?
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">See what I'm building</a>
+        <a href="https://docs.google.com/document/d/1V05TM4JOx7EwgV8F7qFLjzE6eXkYQHbfdzLYgMg2vEg/edit?usp=sharing" target="_blank" rel="noopener" class="btn-ghost">Read Ideas in Motion</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <strong>15+</strong>
+          Active & conceptual projects
+        </div>
+        <div class="hero-meta-item">
+          <strong>XR</strong>
+          Web-first, zero-install AR
+        </div>
+        <div class="hero-meta-item">
+          <strong>Open</strong>
+          To collaboration
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2 class="section-title">Systems thinker. Reluctant specialist.</h2>
+          <div class="section-body">
+            <p>I'm a CS student and fullstack developer based in Lagos, formerly an XR developer at IMISI3D — Africa's leading immersive technology lab. I build things that sit at the intersection of technology, culture, and commerce.</p>
+            <p>My work spans augmented reality, community-owned financial tools, commerce infrastructure for Nigerian SMBs, and long-range research into teleoperation and remote sensing. The thread running through all of it: building for people the tools weren't designed for.</p>
+            <p>I'm also co-directing PUMZI, a wordless sci-fi graphic novel, and General Secretary of Enactus Babcock University.</p>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow">How I build</p>
+          <ul class="principles">
+            <li>
+              <strong>Web-First Mandate</strong>
+              No app installs. No ARCore or ARKit dependencies. Immersive technology should adapt to the user's infrastructure, not the other way around.
+            </li>
+            <li>
+              <strong>Friction Reduction Over Novelty</strong>
+              Many problems aren't waiting for new technology. They're waiting for existing tools to be connected more intelligently.
+            </li>
+            <li>
+              <strong>Empowering the Underserved</strong>
+              The people who most need better tools are usually the last ones those tools are designed for.
+            </li>
+            <li>
+              <strong>Infrastructure-First Creativity</strong>
+              Creative expression is only as powerful as the systems backing it.
+            </li>
+            <li>
+              <strong>Five-Layer Filter</strong>
+              Tool → User → Incentive → Distribution → Cultural Context. Will this deploy in Nigeria? Is it economically realistic?
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section id="writing">
+    <div class="container">
+      <div class="writing-intro">
+        <p class="eyebrow">Writing</p>
+        <h2 class="section-title">Thinking out loud.</h2>
+        <p class="section-body">I write about building in Africa, spatial computing, and the systems underneath the things we take for granted. Published on Substack and cross-posted to LinkedIn.</p>
+      </div>
+      <div class="writing-links">
+        <a href="https://substack.com/@iyiolaolukoya" target="_blank" rel="noopener" class="writing-card">
+          <span class="writing-platform">Substack</span>
+          <span class="writing-title">Lock In</span>
+          <span class="writing-desc">On motivation, stimulation, and the fine line between discipline and addiction.</span>
+          <span class="writing-arrow">Read →</span>
+        </a>
+        <a href="https://substack.com/@iyiolaolukoya" target="_blank" rel="noopener" class="writing-card">
+          <span class="writing-platform">Substack</span>
+          <span class="writing-title">Rebound</span>
+          <span class="writing-desc">Elasticity and plasticity as a frame for recovery. What actually bounces back, and what doesn't.</span>
+          <span class="writing-arrow">Read →</span>
+        </a>
+        <a href="https://substack.com/@iyiolaolukoya" target="_blank" rel="noopener" class="writing-card">
+          <span class="writing-platform">Substack</span>
+          <span class="writing-title">ShiftOS</span>
+          <span class="writing-desc">What if your operating environment shifted to match your cognitive state rather than the clock?</span>
+          <span class="writing-arrow">Read →</span>
+        </a>
+        <a href="https://substack.com/@iyiolaolukoya" target="_blank" rel="noopener" class="writing-card">
+          <span class="writing-platform">Substack — All Writing</span>
+          <span class="writing-title">More on Substack</span>
+          <span class="writing-desc">XR positioning, teleoperation, building in Nigeria, and other rabbit holes I've gone down and written my way out of.</span>
+          <span class="writing-arrow">View all →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container-wide">
+      <div class="projects-intro container" style="max-width: var(--max); margin-bottom: 3rem;">
+        <p class="eyebrow">Projects</p>
+        <h2 class="section-title">What I'm building.</h2>
+        <p class="section-body">Across five themes — each project runs through the same filter. Real problem, real context, real constraints. Some are shipping. Some are resting. All of them are serious.</p>
+      </div>
+
+      <!-- Theme 1: Spatial -->
+      <div class="theme-group">
+        <p class="theme-label">Theme 1 — Spatial Computing & Cultural Preservation</p>
+        <div class="project-grid">
+          <div class="project-card" style="--t-color: var(--t-spatial)">
+            <p class="project-name">Cultural Headwear AR</p>
+            <p class="project-status">Prototype / Concept</p>
+            <p class="project-desc">WebAR try-on and cultural context for traditional headwear — face tracking in the browser, no app required. Built for fashion houses, heritage institutions, and tourism boards.</p>
+          </div>
+          <div class="project-card" style="--t-color: var(--t-spatial)">
+            <p class="project-name">CakeView</p>
+            <p class="project-status">Concept / Prototype</p>
+            <p class="project-desc">AR cake designer for bespoke bakers. Clients visualize and customize orders in 3D before a single thing is baked. Cuts revision cycles and WhatsApp back-and-forth.</p>
+          </div>
+          <div class="project-card" style="--t-color: var(--t-spatial)">
+            <p class="project-name">Nigeria Tourism AR</p>
+            <p class="project-status">Concept</p>
+            <p class="project-desc">Turns static print media into animated spatial windows. Point a mobile browser at a poster — waterfalls flow, monuments emerge, booking links appear.</p>
+          </div>
+          <div class="project-card" style="--t-color: var(--t-spatial)">
+            <p class="project-name">AR Food Menus</p>
+            <p class="project-status">Active Prototype</p>
+            <p class="project-desc">Two implementations of 3D food visualization for restaurants — conversational and immersive. Spatial previews reduce ordering friction and increase average order value.</p>
+          </div>
+          <div class="project-card" style="--t-color: var(--t-spatial)">
+            <p class="project-name">AR Book Platform</p>
+            <p class="project-status">Prototype</p>
+            <p class="project-desc">Layers interactive 3D diagrams and animated processes onto physical textbook pages. No hardware upgrades needed — just a phone and a marker.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Theme 2: Commerce -->
+      <div class="theme-group">
+        <p class="theme-label">Theme 2 — Commerce, Logistics & Community Finance</p>
+        <div class="project-grid">
+          <div class="project-card" style="--t-color: var(--t-commerce)">
+            <p class="project-name">StoreSmith</p>
+            <p class="project-status">Active Development</p>
+            <p class="project-desc">Commerce OS for Nigerian SMBs. Polished storefronts, payment integration, and vendor infrastructure — for merchants who aren't yet thinking like businesses.</p>
+          </div>
+          <div class="project-card" style="--t-color: var(--t-commerce)">
+            <p class="project-name">Thanox</p>
+            <p class="project-status">Concept — Active Revival</p>
+            <p class="project-desc">A borderless open-source design collective with one long-term goal: crowdsource the design of an affordable EV for the African market, then bring it to production. The NFT is not the product. The car is.</p>
+          </div>
+          <div class="project-card" style="--t-color: var(--t-commerce)">
+            <p class="project-name">FamilyFloat</p>
+            <p class="project-status">Research & Design</p>
+            <p class="project-desc">Collaborative financial tool for families and tight-knit social circles. Crypto-native backend on Celo, web2-style interface. Designed for ajo, esusu, and group savings culture.</p>
+          </div>
+          <div class="project-card" style="--t-color: var(--t-commerce)">
+            <p class="project-name">Community Purchase Club</p>
+            <p class="project-status">Concept</p>
+            <p class="project-desc">Digitizes high-trust offline purchasing collectives. Custom group ledgers, automated contribution tracking, and shared purchasing power.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Theme 3: Identity -->
+      <div class="theme-group">
+        <p class="theme-label">Theme 3 — Identity, Community & Digital Spaces</p>
+        <div class="project-grid">
+          <div class="project-card" style="--t-color: var(--t-identity)">
+            <p class="project-name">Bubble Share</p>
+            <p class="project-status">Product Architecture</p>
+            <p class="project-desc">Permission-based identity platform. Curate distinct profile bubbles for different life contexts — professional, creative, social — and share them selectively via QR.</p>
+          </div>
+          <div class="project-card" style="--t-color: var(--t-identity)">
+            <p class="project-name">Social Curation Platform</p>
+            <p class="project-status">Concept</p>
+            <p class="project-desc">For creating and sharing curated collections of newsletters, accounts, playlists, and learning tracks. Human curation packaged into a shareable format.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Theme 4: Creative -->
+      <div class="theme-group">
+        <p class="theme-label">Theme 4 — Creative Pipelines, Narrative & Cultural Expression</p>
+        <div class="project-grid">
+          <div class="project-card" style="--t-color: var(--t-creative)">
+            <p class="project-name">Interactive Narrative Engine</p>
+            <p class="project-status">Research & Architecture</p>
+            <p class="project-desc">Browser-based storytelling platform that lets audiences experience one narrative from multiple character perspectives simultaneously.</p>
+          </div>
+          <div class="project-card" style="--t-color: var(--t-creative)">
+            <p class="project-name">AI Creative Pipeline</p>
+            <p class="project-status">Research & Workflow Design</p>
+            <p class="project-desc">Coordinated multi-model framework for complex creative briefs. Built from experiments combining Claude, ChatGPT, and Gemini into cohesive multi-modal outputs.</p>
+          </div>
+          <div class="project-card" style="--t-color: var(--t-creative)">
+            <p class="project-name">Dance On</p>
+            <p class="project-status">MVP Built, Dormant</p>
+            <p class="project-desc">Interactive dance learning platform using computer vision pose estimation. MVP built, codebase lost. The architecture is solid — this one gets rebuilt.</p>
+          </div>
+          <div class="project-card" style="--t-color: var(--t-creative)">
+            <p class="project-name">Motion & Emotion Library</p>
+            <p class="project-status">Technical Research</p>
+            <p class="project-desc">High-fidelity, culturally grounded character animation library for African game and interactive narrative creators. Most existing libraries default to Western behavioral patterns.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Theme 5: Horizon -->
+      <div class="theme-group">
+        <p class="theme-label">Theme 5 — The Outer Horizon</p>
+        <div class="project-grid">
+          <div class="project-card" style="--t-color: var(--t-horizon)">
+            <p class="project-name">Teleoperation & Remote Marine Exploration</p>
+            <p class="project-status">Long-Range Research</p>
+            <p class="project-desc">XR as the human interface layer for teleoperation — projecting skilled presence anywhere in the world without emigrating. Deep focus: connecting classrooms in Lagos to the ocean floor via affordable ROVs and WebXR.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDEAS IN MOTION CTA -->
+  <section id="ideas" style="border-top: none;">
+    <div class="container">
+      <p class="eyebrow">Ideas in Motion</p>
+      <h2 class="section-title">The full picture, in one document.</h2>
+      <div class="section-body">
+        <p>Ideas in Motion is a living sketchbook — a detailed synthesis of everything above, with gaps, context, and honest status on each project. It's not a pitch deck. It's what I'm actually thinking.</p>
+        <p>If something here overlaps with your world, or if you keep something similar yourself, I'd genuinely like to talk.</p>
+      </div>
+      <div class="ideas-cta-row">
+        <a href="https://docs.google.com/document/d/1V05TM4JOx7EwgV8F7qFLjzE6eXkYQHbfdzLYgMg2vEg/edit?usp=sharing" target="_blank" rel="noopener" class="btn-light">Read Ideas in Motion</a>
+        <a href="#contact" class="btn-ghost-light">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2 class="section-title">Let's figure out where our work intersects.</h2>
+          <p class="section-body">I'm not looking for funding. I'm looking for builders, domain experts, curious thinkers, and people who carry their own portfolio of questions. If that's you, reach out.</p>
+        </div>
+        <div>
+          <ul class="contact-links">
+            <li>
+              <span class="contact-platform">Email</span>
+              <a href="mailto:olukoyaiyiola@gmail.com" class="contact-handle">olukoyaiyiola@gmail.com</a>
+              <span class="contact-arrow">→</span>
+            </li>
+            <li>
+              <span class="contact-platform">LinkedIn</span>
+              <a href="https://linkedin.com/in/olukoyaiyiola" target="_blank" rel="noopener" class="contact-handle">olukoyaiyiola</a>
+              <span class="contact-arrow">→</span>
+            </li>
+            <li>
+              <span class="contact-platform">GitHub</span>
+              <a href="https://github.com/dynamikcodez" target="_blank" rel="noopener" class="contact-handle">dynamikcodez</a>
+              <span class="contact-arrow">→</span>
+            </li>
+            <li>
+              <span class="contact-platform">Substack</span>
+              <a href="https://substack.com/@iyiolaolukoya" target="_blank" rel="noopener" class="contact-handle">@iyiolaolukoya</a>
+              <span class="contact-arrow">→</span>
+            </li>
+            <li>
+              <span class="contact-platform">WhatsApp</span>
+              <a href="https://wa.me/2347032293819" class="contact-handle">+234 703 229 3819</a>
+              <span class="contact-arrow">→</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Olukoya Iyiola</span>
+    <span class="footer-note">Lagos, Nigeria · Building in the open · 2026</span>
+  </footer>
+
+</body>
+</html>
